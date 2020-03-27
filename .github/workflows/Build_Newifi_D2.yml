@@ -6,8 +6,6 @@ on:
   push:
     branches:
       - Newifi_D2
-    paths:
-      - 'Newifi_D2.config'
 #  schedule:
 #    - cron: 0 8 * * 5
   watch:  
