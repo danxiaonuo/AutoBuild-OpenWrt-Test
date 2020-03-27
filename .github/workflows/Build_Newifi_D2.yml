@@ -6,9 +6,11 @@ on:
   push:
     branches:
       - Newifi_D2
+    paths:
+      - 'Newifi_D2.config'
 #  schedule:
 #    - cron: 0 8 * * 5
-  watch:
+  watch:  
      types: started
 
 env:
@@ -53,7 +55,6 @@ jobs:
 
     - name: Load custom configuration
       run: |
-        [ -e files ] && mv files openwrt/files
         [ -e $CONFIG_FILE ] && mv $CONFIG_FILE openwrt/.config
         chmod +x $DIY_SH
         cd openwrt
