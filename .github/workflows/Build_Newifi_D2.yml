@@ -1,4 +1,4 @@
-name: Build Newifi_D2
+name: Build Newifi3_D2
 
 on:
   release:
@@ -7,7 +7,7 @@ on:
     branches:
       - Newifi_D2
     paths:
-      - 'Newifi_D2.config'
+      - 'mini_Newifi3_D2.config'
 #  schedule:
 #    - cron: 0 8 * * 5
 #  watch:  
@@ -16,7 +16,7 @@ on:
 env:
   REPO_URL: https://github.com/coolsnowwolf/lede
   REPO_BRANCH: master
-  CONFIG_FILE: Newifi_D2.config
+  CONFIG_FILE: mini_Newifi3_D2.config
   DIY_SH: customize.sh
   SSH_ACTIONS: false
   UPLOAD_BIN_DIR: false
