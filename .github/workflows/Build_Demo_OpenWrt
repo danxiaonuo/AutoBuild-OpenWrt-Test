@@ -1,4 +1,4 @@
-name: Build demo-openwrt
+name: Build Demo_OpenWrt
 
 on:
   release:
