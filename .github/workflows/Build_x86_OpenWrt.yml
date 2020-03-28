@@ -1,4 +1,4 @@
-name: Build x86-openwrt
+name: Build x86_OpenWrt
 
 on:
   release:
@@ -7,7 +7,7 @@ on:
     branches:
       - demo
     paths:
-      - 'x86.config'
+      - 'x86_OpenWrt.config'
 #  schedule:
 #    - cron: 0 8 * * 5
 #  watch:  
@@ -16,7 +16,7 @@ on:
 env:
   REPO_URL: https://github.com/coolsnowwolf/lede
   REPO_BRANCH: master
-  CONFIG_FILE: x86.config
+  CONFIG_FILE: x86_OpenWrt.config
   DIY_SH: customize.sh
   SSH_ACTIONS: false
   UPLOAD_BIN_DIR: false
