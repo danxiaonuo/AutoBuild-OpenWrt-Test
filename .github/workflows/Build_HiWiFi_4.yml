@@ -1,4 +1,4 @@
-name: Build hiwifi_3
+name: Build HiWiFi_4
 
 on:
   release:
@@ -7,7 +7,7 @@ on:
     branches:
       - demo
     paths:
-      - 'hiwifi_3.config'
+      - 'HiWiFi_4.config'
 #  schedule:
 #    - cron: 0 8 * * 5
 #  watch:  
@@ -16,7 +16,7 @@ on:
 env:
   REPO_URL: https://github.com/coolsnowwolf/lede
   REPO_BRANCH: master
-  CONFIG_FILE: hiwifi_3.config
+  CONFIG_FILE: HiWiFi_4.config
   DIY_SH: customize.sh
   SSH_ACTIONS: false
   UPLOAD_BIN_DIR: false
