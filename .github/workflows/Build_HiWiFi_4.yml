@@ -5,7 +5,7 @@ on:
     types: published
   push:
     branches:
-      - demo
+      - HiWiFi_4
     paths:
       - 'HiWiFi_4.config'
 #  schedule:
