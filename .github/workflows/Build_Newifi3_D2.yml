@@ -5,7 +5,7 @@ on:
     types: published
   push:
     branches:
-      - Newifi_D2
+      - Newifi3_D2
     paths:
       - 'Newifi3_D2.config'
 #  schedule:
