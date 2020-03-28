@@ -5,7 +5,7 @@ on:
     types: published
   push:
     branches:
-      - demo
+      - x86_OpenWrt
     paths:
       - 'x86_OpenWrt.config'
 #  schedule:
