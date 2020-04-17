@@ -1,5 +1,9 @@
 # 修改默认登陆IP地址
 sed -i 's/192.168.1.1/10.8.1.1/g' package/base-files/files/bin/config_generate
+# 修改系统欢迎词
+curl -fsSL https://raw.githubusercontent.com/danxiaonuo/AutoBuild-OpenWrt/master/banner > package/base-files/files/etc/banner
+# 修改系统内核参数
+curl -fsSL https://raw.githubusercontent.com/danxiaonuo/AutoBuild-OpenWrt/master/sysctl.conf > package/base-files/files/etc/sysctl.conf
 
 # 增加openwet常用软件包
 git clone https://github.com/kenzok8/openwrt-packages.git package/mine/
