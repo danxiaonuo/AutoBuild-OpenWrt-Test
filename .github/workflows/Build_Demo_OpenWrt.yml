@@ -1,22 +1,22 @@
-name: Build Demo_OpenWrt
+name: Build K3_OpenWrt
 
 on:
   release:
     types: published
   push:
     branches:
-      - Demo_OpenWrt
+      - K3_OpenWrt
     paths:
-      - '.config'
+      - 'K3.config'
 #  schedule:
 #    - cron: 0 8 * * 5
-#  watch:  
-#     types: started
+  watch:  
+     types: started
 
 env:
   REPO_URL: https://github.com/coolsnowwolf/lede
   REPO_BRANCH: master
-  CONFIG_FILE: .config
+  CONFIG_FILE: K3.config
   DIY_SH: customize.sh
   SSH_ACTIONS: false
   UPLOAD_BIN_DIR: false
