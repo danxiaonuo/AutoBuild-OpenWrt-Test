@@ -8,7 +8,7 @@ curl -fsSL https://raw.githubusercontent.com/danxiaonuo/AutoBuild-OpenWrt/master
 #add lienol feed: such like passwall
 
 echo "Adding lienol packages feed"
-echo "src-git lienol https://github.com/Lienol/openwrt-package.git" >> feeds.conf.default
+echo "src-git lienol https://github.com/chenshuo890/lienol-openwrt-package.git" >> feeds.conf.default
 
 echo "add helloworld feeds"
 sed -i "s/^#\(src-git helloworld .*\)$/\1/" feeds.conf.default
