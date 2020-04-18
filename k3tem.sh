@@ -6,21 +6,12 @@ curl -fsSL https://raw.githubusercontent.com/danxiaonuo/AutoBuild-OpenWrt/master
 curl -fsSL https://raw.githubusercontent.com/danxiaonuo/AutoBuild-OpenWrt/master/sysctl.conf > package/base-files/files/etc/sysctl.conf
 
 #add lienol feed: such like passwall
-echo ""
+
 echo "Adding lienol packages feed"
 echo "src-git lienol https://github.com/Lienol/openwrt-package.git" >> feeds.conf.default
 
-echo ""
 echo "add helloworld feeds"
 sed -i "s/^#\(src-git helloworld .*\)$/\1/" feeds.conf.default
-
-echo ""
-echo "Updating feeds"
-./scripts/feeds update -a
-
-echo ""
-echo "Installing feeds"
-./scripts/feeds install -a
 
 # Compile only k3
 sed -i 's|^TARGET_|# TARGET_|g; s|# TARGET_DEVICES += phicomm-k3|TARGET_DEVICES += phicomm-k3|' target/linux/bcm53xx/image/Makefile
