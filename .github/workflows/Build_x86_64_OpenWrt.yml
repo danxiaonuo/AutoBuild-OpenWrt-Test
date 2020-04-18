@@ -56,7 +56,7 @@ jobs:
     - name: Update feeds
       run: cd openwrt && ./scripts/feeds update -a
       
-    - name: Install feeds
+    - name: Update feeds
       run: cd openwrt && ./scripts/feeds update luci -a
 
     - name: Install feeds
