@@ -32,6 +32,9 @@ git clone https://github.com/lwz322/luci-app-k3screenctrl.git package/k3/luci-ap
 git clone https://github.com/lwz322/k3screenctrl.git package/k3/k3screenctrl
 git clone https://github.com/lwz322/k3screenctrl_build.git package/k3/k3screenctrl_build
 
+# delete k3screenctrl
+rm -rf package/lean/k3screenctrl
+
 # smartdns
 git clone https://github.com/pymumu/openwrt-smartdns.git package/mine/smartdns
 git clone https://github.com/pymumu/luci-app-smartdns.git package/mine/luci-app-smartdns
