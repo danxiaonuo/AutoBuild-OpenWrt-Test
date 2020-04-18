@@ -1,3 +1,7 @@
+# 修改root密码
+pwd="admin"
+sign=`echo -n  $pwd | md5sum | awk -F- '{ print $1 }'`
+sed -i "s|root::0:0:99999:7:::|root:$sign:0:0:99999:7:::|g" package/base-files/files/etc/shadow
 # 修改默认登陆IP地址
 sed -i 's/192.168.1.1/10.8.1.1/g' package/base-files/files/bin/config_generate
 # 修改系统欢迎词
