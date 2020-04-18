@@ -5,6 +5,23 @@ curl -fsSL https://raw.githubusercontent.com/danxiaonuo/AutoBuild-OpenWrt/master
 # 修改系统内核参数
 curl -fsSL https://raw.githubusercontent.com/danxiaonuo/AutoBuild-OpenWrt/master/sysctl.conf > package/base-files/files/etc/sysctl.conf
 
+#add lienol feed: such like passwall
+echo ""
+echo "Adding lienol packages feed"
+echo "src-git lienol https://github.com/Lienol/openwrt-package.git" >> feeds.conf.default
+
+echo ""
+echo "add helloworld feeds"
+sed -i "s/^#\(src-git helloworld .*\)$/\1/" feeds.conf.default
+
+echo ""
+echo "Updating feeds"
+./scripts/feeds update -a
+
+echo ""
+echo "Installing feeds"
+./scripts/feeds install -a
+
 # 增加openwet常用软件包
 git clone https://github.com/kenzok8/openwrt-packages.git package/mine/
 rm -rf package/mine/luci-app-aliddns
