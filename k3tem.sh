@@ -31,7 +31,7 @@ rm -rf package/lean/k3screenctrl
 
 # smartdns
 git clone https://github.com/pymumu/openwrt-smartdns.git package/mine/smartdns
-git clone https://github.com/pymumu/luci-app-smartdns.git package/mine/luci-app-smartdns
+git clone --branch lede https://github.com/pymumu/luci-app-smartdns.git package/mine/luci-app-smartdns
 
 # 复杂的AdGuardHome的openwrt的luci界面
 git clone https://github.com/rufengsuixing/luci-app-adguardhome.git package/mine/luci-app-adguardhome
