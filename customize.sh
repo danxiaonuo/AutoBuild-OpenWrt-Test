@@ -23,11 +23,7 @@ echo "Installing feeds"
 ./scripts/feeds install -a
 
 # 增加openwet常用软件包
-git clone https://github.com/kenzok8/openwrt-packages.git package/mine/
-rm -rf package/mine/luci-app-aliddns
-rm -rf package/mine/tcpping
-rm -rf package/mine/luci-app-ssr-plus
-rm -rf package/mine/luci-app-smartdns
+#git clone https://github.com/kenzok8/openwrt-packages.git package/mine/
 
 # 更改默认主题为Argon
 # sed -i 's/luci-theme-bootstrap/luci-theme-argon/g' package/feeds/luci/luci/Makefile
