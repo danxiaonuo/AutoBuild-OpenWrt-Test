@@ -14,14 +14,6 @@ echo ""
 echo "add helloworld feeds"
 sed -i "s/^#\(src-git helloworld .*\)$/\1/" feeds.conf.default
 
-echo ""
-echo "Updating feeds"
-./scripts/feeds update -a
-
-echo ""
-echo "Installing feeds"
-./scripts/feeds install -a
-
 # 增加openwet常用软件包
 #git clone https://github.com/kenzok8/openwrt-packages.git package/mine/
 
