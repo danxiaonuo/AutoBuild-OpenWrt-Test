@@ -57,6 +57,7 @@ jobs:
         chmod +x $DIY_SH
         cd openwrt
         ../$DIY_SH
+        
     - name: Update feeds
       run: |
         sed -i 's/\"#src-git\"/\"src-git\"/g' ./feeds.conf.default
