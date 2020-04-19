@@ -61,7 +61,7 @@ jobs:
 
     - name: Update feeds
       run: |
-        sed -i 's/\"#src-git\"/\"src-git\"/g' ./feeds.conf.default
+        sed -i 's/^#\(src-git .*\)$/\1/' ./feeds.conf.default
         cd openwrt  
         ./scripts/feeds update -a
         ./scripts/feeds install -a
