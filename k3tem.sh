@@ -13,8 +13,23 @@ curl -fsSL https://raw.githubusercontent.com/danxiaonuo/AutoBuild-OpenWrt/master
 echo "Adding lienol packages feed"
 echo "src-git lienol https://github.com/chenshuo890/lienol-openwrt-package.git" >> feeds.conf.default
 
-echo "add helloworld feeds"
-sed -i "s/^#\(src-git helloworld .*\)$/\1/" feeds.conf.default
+# 增加openwet常用软件包
+#git clone https://github.com/kenzok8/openwrt-packages.git package/mine/
+
+# 更改默认主题为Argon
+rm -rf package/lean/luci-theme-argon
+sed -i '/uci commit luci/i\uci set luci.main.mediaurlbase="/luci-static/argon"' package/lean/default-settings/files/zzz-default-settings
+git clone -b 18.06 https://github.com/jerrykuku/luci-theme-argon.git package/lean/luci-theme-argon
+
+# smartdns
+git clone https://github.com/ujincn/smartdns.git package/mine/smartdns
+git clone https://github.com/ujincn/luci-app-smartdns-compat.git package/mine/luci-app-smartdns-compat
+#git clone https://github.com/pymumu/openwrt-smartdns.git package/mine/smartdns
+#git clone --branch lede https://github.com/pymumu/luci-app-smartdns.git package/mine/luci-app-smartdns
+#svn co https://github.com/kenzok8/openwrt-packages/tree/master/luci-app-smartdns package/mine/luci-app-smartdns
+
+# 复杂的AdGuardHome的openwrt的luci界面
+git clone https://github.com/rufengsuixing/luci-app-adguardhome.git package/mine/luci-app-adguardhome
 
 # Compile only k3
 sed -i 's|^TARGET_|# TARGET_|g; s|# TARGET_DEVICES += phicomm-k3|TARGET_DEVICES += phicomm-k3|' target/linux/bcm53xx/image/Makefile
@@ -28,11 +43,3 @@ git clone https://github.com/lwz322/k3screenctrl_build.git package/k3/k3screenct
 
 # delete k3screenctrl
 rm -rf package/lean/k3screenctrl
-
-# smartdns
-git clone https://github.com/pymumu/openwrt-smartdns.git package/mine/smartdns
-#git clone --branch lede https://github.com/pymumu/luci-app-smartdns.git package/mine/luci-app-smartdns
-svn co https://github.com/kenzok8/openwrt-packages/tree/master/luci-app-smartdns package/mine/luci-app-smartdns
-
-# 复杂的AdGuardHome的openwrt的luci界面
-git clone https://github.com/rufengsuixing/luci-app-adguardhome.git package/mine/luci-app-adguardhome
