@@ -114,5 +114,5 @@ jobs:
       uses: actions/upload-artifact@master
       if: steps.organize.outputs.status == 'success' && !cancelled()
       with:
-        name: ${{ steps.date.outputs.date }}_OpenWrt_x86_firmware
+        name: ${{ steps.date.outputs.date }}_x86_64_OpenWrt
         path: ${{ env.FIRMWARE }}
