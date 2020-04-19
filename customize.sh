@@ -13,15 +13,12 @@ curl -fsSL https://raw.githubusercontent.com/danxiaonuo/AutoBuild-OpenWrt/master
 echo "Adding lienol packages feed"
 echo "src-git lienol https://github.com/chenshuo890/lienol-openwrt-package.git" >> feeds.conf.default
 
-echo "add helloworld feeds"
-sed -i "s/^#\(src-git helloworld .*\)$/\1/" feeds.conf.default
-
 # 增加openwet常用软件包
 #git clone https://github.com/kenzok8/openwrt-packages.git package/mine/
 
 # 更改默认主题为Argon
 rm -rf package/lean/luci-theme-argon
-sed -i 's/luci-theme-bootstrap/luci-theme-argon/g' package/feeds/luci/luci/Makefile
+sed -i '/uci commit luci/i\uci set luci.main.mediaurlbase="/luci-static/argon"' package/lean/default-settings/files/zzz-default-settings
 git clone -b 18.06 https://github.com/jerrykuku/luci-theme-argon.git package/lean/luci-theme-argon
 
 # smartdns
