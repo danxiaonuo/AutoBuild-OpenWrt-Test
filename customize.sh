@@ -20,9 +20,9 @@ sed -i "s/^#\(src-git helloworld .*\)$/\1/" feeds.conf.default
 #git clone https://github.com/kenzok8/openwrt-packages.git package/mine/
 
 # 更改默认主题为Argon
-# sed -i 's/luci-theme-bootstrap/luci-theme-argon/g' package/feeds/luci/luci/Makefile
-# git clone https://github.com/jerrykuku/luci-theme-argon.git -b 18.06 package/mine/luci-theme-argon_new
-# sed -i 's/luci-theme-bootstrap/luci-theme-argon_new/g' package/feeds/luci/luci/Makefile
+rm -rf package/lean/luci-theme-argon
+sed -i 's/luci-theme-bootstrap/luci-theme-argon/g' package/feeds/luci/luci/Makefile
+git clone -b 18.06 https://github.com/jerrykuku/luci-theme-argon.git package/lean/luci-theme-argon
 
 # smartdns
 git clone https://github.com/pymumu/openwrt-smartdns.git package/mine/smartdns
