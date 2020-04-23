@@ -3,7 +3,7 @@ password=$(openssl passwd -1 'admin')
 sed -i "s|root::0:0:99999:7:::|root:$password:0:0:99999:7:::|g" package/base-files/files/etc/shadow
 # 删除一些配置
 sed -i '/shadow/d' package/lean/default-settings/files/zzz-default-settings
-sed -i '/distfeeds/d' package/lean/default-settings/files/zzz-default-settings
+sed -i '/downloads.openwrt.org/d' package/lean/default-settings/files/zzz-default-settings
 # 修改默认登陆IP地址
 sed -i 's/192.168.1.1/10.8.1.1/g' package/base-files/files/bin/config_generate
 sed -i 's/192.168/10.8/g' package/base-files/files/bin/config_generate
