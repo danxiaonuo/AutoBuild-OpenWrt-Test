@@ -12,7 +12,7 @@ sed -i '/uci commit system/i\uci set system.@system[0].hostname='danxiaonuo'' pa
 # 设置时区
 sed -i 's/UTC/CST-8/g' package/base-files/files/bin/config_generate
 # 增加IPV6防火墙
-sed -i '/exit 0/i\#ipv6防火墙\necho 'ip6tables -t nat -I POSTROUTING -s $(uci get network.globals.ula_prefix) -j MASQUERADE' >> /etc/firewall.user' package/lean/default-settings/files/zzz-default-settings
+sed -i '/exit 0/i\#ipv6防火墙\necho "ip6tables -t nat -I POSTROUTING -s $(uci get network.globals.ula_prefix) -j MASQUERADE" >> /etc/firewall.user' package/lean/default-settings/files/zzz-default-settings
 # 增加IPV6
 sed -i '/exit 0/i\curl -fsSL https://raw.githubusercontent.com/danxiaonuo/AutoBuild-OpenWrt/master/99-ipv6 > /etc/hotplug.d/iface/99-ipv6' package/lean/default-settings/files/zzz-default-settings
 sed -i '/99-ipv6/a\chmod u+x /etc/hotplug.d/iface/99-ipv6' package/lean/default-settings/files/zzz-default-settings
