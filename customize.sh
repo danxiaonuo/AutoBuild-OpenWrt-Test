@@ -14,7 +14,8 @@ sed -i 's/UTC/CST-8/g' package/base-files/files/bin/config_generate
 # 增加IPV6防火墙
 sed -i '/exit 0/i\#ipv6防火墙\necho "ip6tables -t nat -I POSTROUTING -s $(uci get network.globals.ula_prefix) -j MASQUERADE" >> /etc/firewall.user' package/lean/default-settings/files/zzz-default-settings
 # 增加IPV6
-sed -i '/exit 0/i\curl -fsSL https://raw.githubusercontent.com/danxiaonuo/AutoBuild-OpenWrt/master/99-ipv6 > /etc/hotplug.d/iface/99-ipv6' package/lean/default-settings/files/zzz-default-settings
+curl -fsSL https://raw.githubusercontent.com/danxiaonuo/AutoBuild-OpenWrt/master/99-ipv6 > package/base-files/files/etc/hotplug.d/99-ipv6
+sed -i '/exit 0/i\# 增加IPV6\nmv /etc/hotplug.d/99-ipv6 /etc/hotplug.d/iface/99-ipv6' package/lean/default-settings/files/zzz-default-settings
 sed -i '/99-ipv6/a\chmod u+x /etc/hotplug.d/iface/99-ipv6' package/lean/default-settings/files/zzz-default-settings
 # 重启WIFI
 sed -i '/exit 0/i\#重启WIFI\nnohup sleep 60 && /sbin/wifi up &' package/base-files/files/etc/rc.local
