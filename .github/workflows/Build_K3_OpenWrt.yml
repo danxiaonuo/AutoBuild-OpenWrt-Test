@@ -65,7 +65,12 @@ jobs:
         sed -i 's/^#\(src-git .*\)$/\1/' ./feeds.conf.default  
         ./scripts/feeds update -a
         ./scripts/feeds install -a
-                
+        
+    - name: Add ipv6
+      run: |
+       curl -fsSL https://raw.githubusercontent.com/danxiaonuo/AutoBuild-OpenWrt/master/99-ipv6 > openwrt/package/base-files/files/etc/hotplug.d/iface/99-ipv6
+       chmod u+x openwrt/package/base-files/files/etc/hotplug.d/iface/99-ipv6
+                   
     - name: Use .config file
       run: |
         [ -e files ] && mv files openwrt/files
