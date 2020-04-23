@@ -3,7 +3,7 @@ password=$(openssl passwd -1 'admin')
 sed -i "s|root::0:0:99999:7:::|root:$password:0:0:99999:7:::|g" package/base-files/files/etc/shadow
 # 删除一些配置
 sed -i '/shadow/d' package/lean/default-settings/files/zzz-default-settings
-sed -i '/downloads.openwrt.org/d' package/lean/default-settings/files/zzz-default-settings
+sed -i '/distfeeds/d' package/lean/default-settings/files/zzz-default-settings
 # 修改默认登陆IP地址
 sed -i 's/192.168.1.1/10.8.1.1/g' package/base-files/files/bin/config_generate
 sed -i 's/192.168/10.8/g' package/base-files/files/bin/config_generate
@@ -13,7 +13,7 @@ sed -i '/uci commit system/i\uci set system.@system[0].hostname='danxiaonuo'' pa
 # 设置时区
 sed -i 's/UTC/CST-8/g' package/base-files/files/bin/config_generate
 # 修改默认源
-sed -i 's#downloads.openwrt.org#mirrors.ustc.edu.cn/lede#g' /etc/opkg/distfeeds.conf
+sed -i "/http/i\sed -i 's#downloads.openwrt.org#mirrors.ustc.edu.cn/lede#g' /etc/opkg/distfeeds.conf" package/lean/default-settings/files/zzz-default-settings
 # 增加IPV6防火墙
 sed -i '/exit 0/i\#ipv6防火墙\necho "ip6tables -t nat -I POSTROUTING -s $(uci get network.globals.ula_prefix) -j MASQUERADE" >> /etc/firewall.user' package/lean/default-settings/files/zzz-default-settings
 # 重启WIFI
@@ -28,6 +28,8 @@ sed -i 's/OpenWrt/${ssid}/g' package/kernel/mac80211/files/lib/wifi/mac80211.sh
 sed -i 's/none/psk-mixed/g' package/kernel/mac80211/files/lib/wifi/mac80211.sh
 # 增加默认WIFI密码
 sed -i '/set wireless.default_radio${devidx}.encryption=psk-mixed/a\\t\t\tset wireless.default_radio${devidx}.key=admin' package/kernel/mac80211/files/lib/wifi/mac80211.sh
+#芝麻开门
+sed -i '/exit 0/i\#芝麻开门\necho 0xDEADBEEF > /etc/config/google_fu_mode' zzz-default-settings package/lean/default-settings/files/zzz-default-settings
 # 修改系统欢迎词
 curl -fsSL https://raw.githubusercontent.com/danxiaonuo/AutoBuild-OpenWrt/master/banner > package/base-files/files/etc/banner
 # 修改系统内核参数
