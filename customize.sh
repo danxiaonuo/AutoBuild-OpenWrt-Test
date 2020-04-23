@@ -29,7 +29,7 @@ sed -i 's/none/psk-mixed/g' package/kernel/mac80211/files/lib/wifi/mac80211.sh
 # 增加默认WIFI密码
 sed -i '/set wireless.default_radio${devidx}.encryption=psk-mixed/a\\t\t\tset wireless.default_radio${devidx}.key=admin' package/kernel/mac80211/files/lib/wifi/mac80211.sh
 #芝麻开门
-sed -i '/exit 0/i\#芝麻开门\necho 0xDEADBEEF > /etc/config/google_fu_mode' zzz-default-settings package/lean/default-settings/files/zzz-default-settings
+sed -i '/exit 0/i\#芝麻开门\necho 0xDEADBEEF > /etc/config/google_fu_mode' package/lean/default-settings/files/zzz-default-settings
 # 修改系统欢迎词
 curl -fsSL https://raw.githubusercontent.com/danxiaonuo/AutoBuild-OpenWrt/master/banner > package/base-files/files/etc/banner
 # 修改系统内核参数
