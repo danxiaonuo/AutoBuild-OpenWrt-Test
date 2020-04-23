@@ -25,7 +25,8 @@ env:
 
 jobs:
   build:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
+    if: github.event.repository.owner.id == github.event.sender.id
         
     steps:
     - name: Get build date
@@ -47,6 +48,7 @@ jobs:
         sudo -E apt-get -qq install build-essential asciidoc binutils bzip2 gawk gettext git libncurses5-dev libz-dev patch unzip zlib1g-dev lib32gcc1 libc6-dev-i386 subversion flex uglifyjs gcc-multilib g++-multilib p7zip p7zip-full msmtp libssl-dev texinfo libglib2.0-dev xmlto qemu-utils upx libelf-dev autoconf automake libtool autopoint device-tree-compiler python3.5 git-core antlr3 gperf
         sudo -E apt-get -qq autoremove --purge
         sudo -E apt-get -qq clean
+        wget -O - https://raw.githubusercontent.com/friendlyarm/build-env-on-ubuntu-bionic/master/install.sh | bash
         curl -fsSL https://raw.githubusercontent.com/danxiaonuo/AutoBuild-OpenWrt/master/.bashrc > ~/.bashrc
         
     - name: Clone source code
@@ -64,7 +66,12 @@ jobs:
         sed -i 's/^#\(src-git .*\)$/\1/' ./feeds.conf.default  
         ./scripts/feeds update -a
         ./scripts/feeds install -a
-                
+        
+    - name: Add ipv6
+      run: |
+       curl -fsSL https://raw.githubusercontent.com/danxiaonuo/AutoBuild-OpenWrt/master/99-ipv6 > openwrt/package/base-files/files/etc/hotplug.d/iface/99-ipv6
+       chmod u+x openwrt/package/base-files/files/etc/hotplug.d/iface/99-ipv6
+               
     - name: Use .config file
       run: |
         [ -e files ] && mv files openwrt/files
