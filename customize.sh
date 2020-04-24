@@ -38,6 +38,10 @@ sed -i '/exit 0/i\# 芝麻开门\necho 0xDEADBEEF > /etc/config/google_fu_mode' 
 curl -fsSL https://raw.githubusercontent.com/danxiaonuo/AutoBuild-OpenWrt/master/banner > package/base-files/files/etc/banner
 # 修改系统内核参数
 curl -fsSL https://raw.githubusercontent.com/danxiaonuo/AutoBuild-OpenWrt/master/sysctl.conf > package/base-files/files/etc/sysctl.conf
+# 修改smartdns配置
+curl -fsSL https://raw.githubusercontent.com/danxiaonuo/AutoBuild-OpenWrt/master/smartdns/newsmartdns > package/base-files/files/etc/newsmartdns
+curl -fsSL https://raw.githubusercontent.com/danxiaonuo/AutoBuild-OpenWrt/master/smartdns/smartdns.conf > package/base-files/files/etc/smartdns.conf
+sed -i '/exit 0/i\# 修改smartdns配置\nmv /etc/newsmartdns /etc/config/smartdns\nmv /etc/smartdns.conf /var/etc/smartdns/smartdns.conf' package/lean/default-settings/files/zzz-default-settings
 
 #add lienol feed: such like passwall
 echo "Adding lienol packages feed"
