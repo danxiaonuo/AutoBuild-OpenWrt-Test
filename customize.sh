@@ -18,7 +18,7 @@ sed -i '/exit 0/i\mv /etc/hotplug.d/99-ipv6 /etc/hotplug.d/iface/99-ipv6' packag
 sed -i '/99-ipv6/a\chmod u+x /etc/hotplug.d/iface/99-ipv6' package/lean/default-settings/files/zzz-default-settings
 sed -i '/exit 0/i\sed -i "s/option ip6assign ".*"/option ip6assign "64"/g" /etc/config/network' package/lean/default-settings/files/zzz-default-settings
 # 增加IPV6防火墙
-sed -i '/exit 0/i\# IPV6防火墙\necho "ip6tables -t nat -I POSTROUTING -s $(uci get network.globals.ula_prefix) -j MASQUERADE" >> /etc/firewall.user' package/lean/default-settings/files/zzz-default-settings
+sed -i '/uci commit network/a\# IPV6防火墙\necho "ip6tables -t nat -I POSTROUTING -s $(uci get network.globals.ula_prefix) -j MASQUERADE" >> /etc/firewall.user' package/lean/default-settings/files/zzz-default-settings
 # 重启WIFI
 sed -i '/exit 0/i\# 启动WIFI\nnohup sleep 60 && /sbin/wifi up &' package/base-files/files/etc/rc.local
 # 增加 SSID 2.5G
